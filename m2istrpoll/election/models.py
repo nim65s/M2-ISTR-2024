@@ -1,4 +1,4 @@
-from django import models
+from django.db import models
 
 
 class Election(models.Model):
@@ -7,6 +7,9 @@ class Election(models.Model):
 
 
 class Candidate(models.Model):
-    election = models.ForeignKey(Election)
+    election = models.ForeignKey(
+        Election,
+        on_delete=models.CASCADE,
+    )
     name = models.CharField(max_length=250)
     score = models.IntegerField(default=0)
