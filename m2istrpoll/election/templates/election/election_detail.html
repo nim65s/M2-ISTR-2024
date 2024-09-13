@@ -1,0 +1,11 @@
+<h1>{{ election }}</h1>
+
+<ul>
+{% for candidate in election.candidate_set.all %}
+<li>
+    <a href="/candidate/{{ candidate.id }}/vote">
+    {{ candidate }}: {{ candidate.score }}
+    </a>
+</li>
+{% endfor %}
+</ul>

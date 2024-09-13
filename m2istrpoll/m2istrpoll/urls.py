@@ -17,7 +17,11 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path
+from election import views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("", views.ElectionListView.as_view(), name="elections"),
+    path("election/<int:pk>", views.ElectionDetailView.as_view(), name="election"),
+    path("candidate/<int:pk>/vote", views.VoteView.as_view(), name="vote"),
 ]
